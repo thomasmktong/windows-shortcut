@@ -1,1 +1,1 @@
-code D:\Projects
+powershell.exe -file C:\Users\Thomas\Documents\Repos\windows-shortcut\repo.ps1
