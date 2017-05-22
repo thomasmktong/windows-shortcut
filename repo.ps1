@@ -8,8 +8,13 @@ for ($i = 0; $i -lt $projects.length; $i++) {
 }
 
 $selectedId = Read-Host "Select Project"
-$selectedProject = $projects[$selectedId]
-Set-Location $selectedProject.FullName
+try {
+    $selectedProject = $projects[$selectedId]
+    Set-Location $selectedProject.FullName
+} catch {
+    Write-Host "Unknown project, exiting..."
+    exit
+}
 
 Write-Host "`nTools:"
 $tools = @(
@@ -25,5 +30,10 @@ for ($i = 0; $i -lt $tools.length; $i++) {
 }
 
 $selectedId = Read-Host "Select Tools"
-$selectedTool = $tools[$selectedId]
-Invoke-Expression "$selectedTool"
+try {
+    $selectedTool = $tools[$selectedId]
+    Invoke-Expression "$selectedTool"
+} catch {
+    Write-Host "Unknown tool, exiting..."
+    exit
+}
