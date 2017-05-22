@@ -1,1 +1,1 @@
-powershell.exe -file C:\Users\Thomas\Documents\Repos\windows-shortcut\repo.ps1
+powershell.exe -file %~dp0\repo.ps1

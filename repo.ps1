@@ -12,7 +12,13 @@ $selectedProject = $projects[$selectedId]
 Set-Location $selectedProject.FullName
 
 Write-Host "`nTools:"
-$tools = @("code .", "jupyter notebook", "C:\Progra~1\Git\git-bash.exe")
+$tools = @(
+    "start .", 
+    "code .", 
+    "jupyter notebook", 
+    "tensorboard.bat",
+    "C:\Progra~1\Git\git-bash.exe"
+)
 
 for ($i = 0; $i -lt $tools.length; $i++) {
     Write-Host ("$i. " + $tools[$i])
