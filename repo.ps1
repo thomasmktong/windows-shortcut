@@ -11,6 +11,8 @@ $selectedId = Read-Host "Select Project"
 try {
     $selectedProject = $projects[$selectedId]
     Set-Location $selectedProject.FullName
+    $newLocation = Get-Location
+    Write-Host "Changed path to $newLocation"
 } catch {
     Write-Host "Unknown project, exiting..."
     exit
@@ -18,11 +20,11 @@ try {
 
 Write-Host "`nTools:"
 $tools = @(
-    "start .", 
-    "code .", 
-    "jupyter notebook", 
+    "start .",
+    "code .",
+    "jupyter notebook",
     "tensorboard.bat",
-    "C:\Progra~1\Git\git-bash.exe"
+    ".\run.bat"
 )
 
 for ($i = 0; $i -lt $tools.length; $i++) {
@@ -32,8 +34,9 @@ for ($i = 0; $i -lt $tools.length; $i++) {
 $selectedId = Read-Host "Select Tools"
 try {
     $selectedTool = $tools[$selectedId]
-    Invoke-Expression "$selectedTool"
+    Write-Host "Trying to call $selectedTool..."
+    Start-Process "$selectedTool" | Out-Default
 } catch {
-    Write-Host "Unknown tool, exiting..."
-    exit
+    Write-Host "Trying to call $selectedId..."
+    Start-Process $selectedId | Out-Default
 }
