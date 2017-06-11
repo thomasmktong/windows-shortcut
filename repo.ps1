@@ -52,7 +52,7 @@ for ($i = 0; $i -lt $commands.length; $i++) {
     Write-Host ("$i. " + $commands[$i])
 }
 
-$selectedId = Read-Host "Select prebuild commands but type in your own commands"
+$selectedId = Read-Host "Select prebuild commands or type in your own commands"
 try {
     $selectedCommand = $commands[$selectedId]
     if (!$selectedCommand) {
